@@ -8,6 +8,22 @@ loadUploadcare = function (config, callback) {
             window.UPLOADCARE_PUBLIC_KEY = config.key;
             window.UPLOADCARE_LOCALE = config.lang || "en";
             window.UPLOADCARE_TABS = config.tabs || "file url facebook gdrive dropbox instagram evernote flickr skydrive box vk";
+            window.UPLOADCARE_LOCALE_TRANSLATIONS = {
+                buttons: {
+                    //cancel: 'Cancel',
+                    //remove: 'Remove',
+                    choose: {
+                        files: {
+                            one: 'Upload',
+                            other: 'Upload'
+                        },
+                        images: {
+                            one: 'Choose an image',
+                            other: 'Choose images'
+                        }
+                    }
+                }
+            };
 
             // Functions to run after the script tag has loaded
             var loadCallback = function () {
