@@ -14,10 +14,11 @@ meteor add nate-strauser:uploadcare-plus
 ```
 {
   "public" : {
-    "uploadcare":{
-      "publickey":"<YOUR PUBLIC API KEY, looks like xxxxxxxxxxxxxxxxx>",
-      "cdn":"<CUSTOM CDN DOMAIN, defaults to 'http://www.ucarecdn.com/'>"
-    }
+    "uploadcare": {
+          "publicKey": "",
+          "cdn": "http://www.ucarecdn.com",
+          "tabs": "file url facebook gdrive dropbox"
+        }
   }
 }
 ```
@@ -28,9 +29,22 @@ if you specify a publickey, the call to `loadUploadcare()` does not need a key a
 
 Load once for your whole application at startup or as needed from template created or rendered functions
 ```
-loadUploadcare('<YOUR PUBLIC KEY>');
-//can leave out key if its in settings
-```
+    var ucOptions = {
+        key: Meteor.settings.public.uploadcare.publicKey,
+        tabs: Meteor.settings.public.uploadcare.tabs
+    };
+
+    loadUploadcare(ucOptions, function() {
+
+        var widget = uploadcare.Widget('[role=uploadcare-uploader]');
+
+        uploadcare.openDialog(null, {
+            publicKey: Meteor.settings.public.uploadcare.publicKey,
+            imagesOnly: true,
+            crop: "300x200"
+        });
+
+    });
 
 You can call this over and over again.  It will detect if uploadcare has already been loaded, only loading the script when needed.
 
