@@ -69,3 +69,5 @@ UI.registerHelper("uploadcareUUIDToImageUrl", function (uuid, operations) {
     }
     return url;
 });
+
+
