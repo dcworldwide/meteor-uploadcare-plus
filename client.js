@@ -48,6 +48,8 @@ loadUploadcare = function (config, callback) {
             // Load the script tag
             document.getElementsByTagName('head')[0].appendChild(script);
 
+            console.log("uploadcare added to head");
+
         } else {
             if (typeof console !== "undefined") {
                 console.log("Uploadcare Public Key not provided");
